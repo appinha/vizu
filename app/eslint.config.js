@@ -6,6 +6,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-config-prettier";
 import vitest from "@vitest/eslint-plugin";
+import jestDom from "eslint-plugin-jest-dom";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -44,8 +45,12 @@ export default tseslint.config(
   {
     files: ["**/*.test.tsx", "**/*.test.ts"],
     plugins: { vitest },
+    ...jestDom.configs["flat/recommended"],
     rules: {
       ...vitest.configs.all.rules,
+      "no-unsafe-member-access": "off",
+      "@typescript-eslint/unbound-method": "off",
+      "jest/unbound-method": "error",
     },
   },
 );
