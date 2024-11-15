@@ -3,10 +3,10 @@ import logo from "/logo-lines.svg";
 
 export default function Page({ className }: { className: string }) {
   return (
-    <main className={cn("flex-1 max-w-xxl mx-auto")}>
+    <main className={cn("max-w-xxl mx-auto flex-1")}>
       <div
         className={cn(
-          "w-full flex justify-center items-center py-6 px-4",
+          "flex w-full items-center justify-center px-4 py-6",
           className,
         )}
       >
