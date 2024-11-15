@@ -7,6 +7,7 @@ import tseslint from "typescript-eslint";
 import prettier from "eslint-config-prettier";
 import vitest from "@vitest/eslint-plugin";
 import jestDom from "eslint-plugin-jest-dom";
+import testingLibrary from "eslint-plugin-testing-library";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -46,6 +47,7 @@ export default tseslint.config(
     files: ["**/*.test.tsx", "**/*.test.ts"],
     plugins: { vitest },
     ...jestDom.configs["flat/recommended"],
+    ...testingLibrary.configs["flat/react"],
     rules: {
       ...vitest.configs.all.rules,
       "no-unsafe-member-access": "off",
