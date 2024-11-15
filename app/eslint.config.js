@@ -42,6 +42,17 @@ export default tseslint.config(
       "eslint-comments/require-description": "error",
 
       ...reactHooks.configs.recommended.rules,
+      "react/no-array-index-key": "error",
+      "react/no-unused-prop-types": "error",
+      "react/self-closing-comp": "error",
+      "react/jsx-no-leaked-render": "error",
+      "react/jsx-no-useless-fragment": "error",
+      "react/jsx-curly-brace-presence": "error",
+      "react/jsx-boolean-value": "error",
+      "react/jsx-no-constructed-context-values": "error",
+      "react/jsx-no-bind": "error",
+      "react/function-component-definition": "error",
+      "react-hooks/exhaustive-deps": "error",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
