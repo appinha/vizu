@@ -5,6 +5,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import prettier from "eslint-config-prettier";
+import vitest from "@vitest/eslint-plugin";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -38,6 +39,13 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+    },
+  },
+  {
+    files: ["**/*.test.tsx", "**/*.test.ts"],
+    plugins: { vitest },
+    rules: {
+      ...vitest.configs.all.rules,
     },
   },
 );
