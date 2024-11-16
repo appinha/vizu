@@ -1,9 +1,10 @@
 import "@testing-library/jest-dom/vitest";
-import { expect } from "vitest";
+
 import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 import * as matchers from "@testing-library/jest-dom/matchers";
-import { afterEach } from "vitest";
 import { cleanup } from "@testing-library/react";
+import { expect } from "vitest";
+import { afterEach } from "vitest";
 
 declare module "vitest" {
   export interface Assertion<T>
