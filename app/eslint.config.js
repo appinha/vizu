@@ -67,13 +67,14 @@ export default tseslint.config(
   {
     files: ["**/*.test.tsx", "**/*.test.ts"],
     plugins: { vitest },
-    ...jestDom.configs["flat/recommended"],
+    rules: { ...vitest.configs.recommended.rules },
+  },
+  {
+    files: ["**/*.test.tsx", "**/*.test.ts"],
     ...testingLibrary.configs["flat/react"],
-    rules: {
-      ...vitest.configs.all.rules,
-      "no-unsafe-member-access": "off",
-      "@typescript-eslint/unbound-method": "off",
-      "jest/unbound-method": "error",
-    },
+  },
+  {
+    files: ["**/*.test.tsx", "**/*.test.ts"],
+    ...jestDom.configs["flat/recommended"],
   },
 );
