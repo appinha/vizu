@@ -11,7 +11,6 @@ import jestDom from "eslint-plugin-jest-dom";
 import testingLibrary from "eslint-plugin-testing-library";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 
-
 export default tseslint.config(
   { ignores: ["dist"] },
   {
