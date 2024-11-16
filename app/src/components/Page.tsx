@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import logo from "/logo-lines.svg";
+import { cn } from "@/lib/utils";
 
 export default function Page({ className }: { className: string }) {
   return (
