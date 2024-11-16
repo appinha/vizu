@@ -5,7 +5,7 @@ import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
+import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
 import vitest from "@vitest/eslint-plugin";
 import jestDom from "eslint-plugin-jest-dom";
 import testingLibrary from "eslint-plugin-testing-library";
@@ -16,9 +16,9 @@ export default tseslint.config(
     extends: [
       js.configs.recommended,
       ...tseslint.configs.recommended,
-      prettier,
       react.configs.flat.recommended,
       react.configs.flat["jsx-runtime"],
+      eslintPluginPrettierRecommended, // this needs to be last so that eslint-config-prettier has the opportunity to override other configs
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
