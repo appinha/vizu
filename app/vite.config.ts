@@ -14,8 +14,15 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "./src/testing/setup.ts",
-    include: ["**/*.test.tsx", "**/*.test.ts"],
+    include: ["**/*.test.{ts,tsx}"],
     globals: true,
     css: true,
+    coverage: {
+      all: true,
+      enabled: true,
+      provider: "istanbul",
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["**/*.test.{ts,tsx}", "src/main.tsx", "**/*.d.ts"],
+    },
   },
 });
