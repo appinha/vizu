@@ -12,7 +12,7 @@ import {
 type Props<T> = {
   placeholder?: string;
   options: SelectOptions<T>;
-  value: T;
+  value: T | undefined;
   setValue: (v: T) => void;
 };
 
