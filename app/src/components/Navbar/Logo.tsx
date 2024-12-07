@@ -1,12 +1,12 @@
 import logo from "/logo.svg";
 
-export default function Navbar() {
+export default function Logo() {
   return (
-    <header className="nav-shadow sticky top-0 z-50 flex w-full flex-row items-center space-x-4 px-4 py-2 backdrop-blur">
+    <div data-testid="Logo" className="flex flex-row items-center space-x-4">
       <img src={logo} className="h-12" alt="Vizu logo" />
       <span className="bg-gradient-to-r from-[#7F57CE] to-[#0BC5EA] bg-clip-text text-xl font-bold tracking-wider text-transparent">
         VIZU
       </span>
-    </header>
+    </div>
   );
 }
