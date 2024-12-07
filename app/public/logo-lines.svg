@@ -3,8 +3,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="512px" height="512px" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="myGradient">
-      <stop stop-color="#7F57CE" offset="0" />
-      <stop stop-color="#0BC5EA" offset="1" />
+      <stop stop-color="#9947EB" offset="0" />
+      <stop stop-color="#0DCCF2" offset="1" />
     </linearGradient>
   </defs>
   <g fill="url('#myGradient')">
