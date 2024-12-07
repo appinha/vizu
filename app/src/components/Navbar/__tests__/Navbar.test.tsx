@@ -11,17 +11,15 @@ describe("Navbar", () => {
     );
   });
 
-  it("renders the logo image", () => {
+  it("renders the Logo component", () => {
     render(<Navbar />);
 
-    expect(screen.getByAltText("Vizu logo")).toHaveClass("h-12");
+    expect(screen.getByTestId("Logo")).toBeInTheDocument();
   });
 
-  it("renders the logo text", () => {
+  it("renders the SelectMonth component", () => {
     render(<Navbar />);
 
-    expect(screen.getByText("VIZU")).toHaveClass(
-      "bg-gradient-to-r from-[#7F57CE] to-[#0BC5EA] bg-clip-text text-xl font-bold tracking-wider text-transparent",
-    );
+    expect(screen.getByTestId("SelectMonth")).toBeInTheDocument();
   });
 });

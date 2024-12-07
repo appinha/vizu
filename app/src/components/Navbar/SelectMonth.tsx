@@ -23,7 +23,7 @@ export default function SelectMonth() {
   const [month, setMonth] = useState("");
 
   return (
-    <div className="min-w-[200px]">
+    <div data-testid="SelectMonth" className="min-w-[200px]">
       <Select
         placeholder="Selecione o mês..."
         value={month}
