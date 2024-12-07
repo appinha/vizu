@@ -13,7 +13,7 @@ describe("Logo", () => {
     render(<Logo />);
 
     expect(screen.getByText("VIZU")).toHaveClass(
-      "bg-gradient-to-r from-[#7F57CE] to-[#0BC5EA] bg-clip-text text-xl font-bold tracking-wider text-transparent",
+      "bg-gradient-to-r from-[#9947EB] to-[#0DCCF2] bg-clip-text text-xl font-bold tracking-wider text-transparent",
     );
   });
 });
