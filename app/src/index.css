@@ -30,19 +30,6 @@ a:hover {
   box-shadow: 2px 2px 8px rgba(0, 46, 93, 0.1);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 @layer base {
   :root {
     --gradient: linear-gradient(to top left,#0DCCF2,#9947EB);
