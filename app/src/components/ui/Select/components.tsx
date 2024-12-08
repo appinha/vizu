@@ -4,7 +4,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-const Select = SelectPrimitive.Root;
+const SelectContainer = SelectPrimitive.Root;
 
 const SelectGroup = SelectPrimitive.Group;
 
@@ -144,7 +144,7 @@ const SelectSeparator = forwardRef<
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {
-  Select,
+  SelectContainer,
   SelectContent,
   SelectGroup,
   SelectItem,

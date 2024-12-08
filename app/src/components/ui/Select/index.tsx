@@ -1,7 +1,7 @@
 import { SelectOptions } from "@/components/ui/Select/types";
 
 import {
-  Select as SelectContainer,
+  SelectContainer,
   SelectContent,
   SelectGroup,
   SelectItem,
