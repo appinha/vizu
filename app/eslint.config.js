@@ -12,7 +12,7 @@ import testingLibrary from "eslint-plugin-testing-library";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 export default tseslint.config(
-  { ignores: ["dist"] },
+  { ignores: ["dist", "coverage"] },
   {
     extends: [
       js.configs.recommended,
