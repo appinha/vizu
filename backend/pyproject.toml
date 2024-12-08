@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "backend"
+name = "vizu"
 version = "0.1.0"
 description = "Vizu backend."
-authors = ["cacauisadog <cbcaue@protonmail.com>"]
+authors = ["appinha <amanda_pinha@hotmail.com>", "cacauisadog <cbcaue@protonmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
