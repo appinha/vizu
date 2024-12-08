@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { dataSlice } from "@/store/Data/reducer";
 
-const rootReducer = combineSlices(dataSlice);
+export const rootReducer = combineSlices(dataSlice);
 export type RootState = ReturnType<typeof rootReducer>;
 
 export const makeStore = (preloadedState?: Partial<RootState>) => {
