@@ -16,4 +16,10 @@ describe("Logo", () => {
       "bg-gradient-to-r from-[#9947EB] to-[#0DCCF2] bg-clip-text text-xl font-bold tracking-wider text-transparent",
     );
   });
+
+  it("hides the logo text on small screens", () => {
+    render(<Logo />);
+
+    expect(screen.getByText("VIZU")).toHaveClass("hidden md:block");
+  });
 });
