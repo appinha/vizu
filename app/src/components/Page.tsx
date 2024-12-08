@@ -1,7 +1,10 @@
 import logo from "/logo-lines.svg";
 import { cn } from "@/lib/utils";
+import { useSelectedMonth } from "@/store/Data/hooks";
 
 export default function Page({ className }: { className?: string }) {
+  const selectedMonth = useSelectedMonth();
+
   return (
     <main className="max-w-xxl mx-auto flex-1">
       <div
@@ -11,7 +14,11 @@ export default function Page({ className }: { className?: string }) {
           className,
         )}
       >
-        <img src={logo} className="h-36" alt="Vizu logo" />
+        {selectedMonth ? (
+          `Mês selecionado: ${selectedMonth}`
+        ) : (
+          <img src={logo} className="h-36" alt="Vizu logo" />
+        )}
       </div>
     </main>
   );
