@@ -22,4 +22,10 @@ describe("Navbar", () => {
 
     expect(screen.getByTestId("SelectMonth")).toBeInTheDocument();
   });
+
+  it("renders the ThemeToggle component", () => {
+    render(<Navbar />);
+
+    expect(screen.getByTestId("ThemeToggle")).toBeInTheDocument();
+  });
 });
