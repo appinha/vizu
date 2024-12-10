@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello mozão!")
+def healthcheck(request):
+    return JsonResponse({"status": "ok"})
