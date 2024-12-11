@@ -15,14 +15,14 @@ const PHONE_STYLE = {
 
 type Props<T> = {
   row: IRow<T>;
-  onClick: (item: T) => void;
+  onClick?: (item: T) => void;
 };
 
 export default function Row<T>(props: Props<T>) {
   const { row, onClick } = props;
 
   const handleClick = useCallback(
-    () => onClick(row.original),
+    () => onClick?.(row.original),
     [onClick, row.original],
   );
 

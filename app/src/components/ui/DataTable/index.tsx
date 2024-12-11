@@ -7,7 +7,7 @@ import Row from "./Row";
 
 type Props<T> = {
   table: ITable<T>;
-  onClick: (item: T) => void;
+  onClick?: (item: T) => void;
 };
 
 export default function DataTable<T>(props: Props<T>) {

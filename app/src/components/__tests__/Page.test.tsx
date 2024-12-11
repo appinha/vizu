@@ -7,14 +7,14 @@ describe("Page", () => {
   it("renders the main container", () => {
     renderWithProviders(<Page />);
 
-    expect(screen.getByRole("main")).toHaveClass("max-w-xxl mx-auto flex-1");
+    expect(screen.getByRole("main")).toHaveClass("mx-auto max-w-6xl flex-1");
   });
 
   it("renders the content container", () => {
     renderWithProviders(<Page />);
 
     expect(screen.getByTestId("page-content")).toHaveClass(
-      "flex w-full items-center justify-center px-4 py-6",
+      "flex w-full flex-grow px-4 py-6",
     );
   });
 
