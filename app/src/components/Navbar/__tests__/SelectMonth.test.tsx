@@ -1,20 +1,21 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 
 import SelectMonth from "@/components/Navbar/SelectMonth";
+import { renderWithProviders } from "@/testing/renderWithProviders";
 
 describe("SelectMonth", () => {
   const triggerRole = "combobox";
   const placeholder = "Selecione o mês...";
 
   it("renders properly", () => {
-    render(<SelectMonth />);
+    renderWithProviders(<SelectMonth />);
 
     expect(screen.getByText(placeholder)).toBeInTheDocument();
     expect(screen.getByTestId("SelectMonth")).toHaveClass("min-w-[200px]");
   });
 
   it("renders all the options", () => {
-    render(<SelectMonth />);
+    renderWithProviders(<SelectMonth />);
 
     fireEvent.click(screen.getByRole(triggerRole));
 
@@ -22,7 +23,7 @@ describe("SelectMonth", () => {
   });
 
   it("selects an option", () => {
-    render(<SelectMonth />);
+    renderWithProviders(<SelectMonth />);
 
     fireEvent.click(screen.getByRole(triggerRole));
     fireEvent.click(screen.getByText("Março"));
