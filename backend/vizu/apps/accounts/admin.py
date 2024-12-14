@@ -28,7 +28,17 @@ class CustomUserAdmin(UserAdmin):
     )
 
     fieldsets = (
-        (None, {"fields": ("email", "password")}),
+        (
+            None,
+            {
+                "fields": (
+                    "email",
+                    "password",
+                    "first_name",
+                    "last_name",
+                )
+            },
+        ),
         (
             "Permissions",
             {"fields": ("is_staff", "is_active", "groups", "user_permissions")},
@@ -51,7 +61,7 @@ class CustomUserAdmin(UserAdmin):
             },
         ),
     )
-    search_fields = ("email_deterministic",)
+    search_fields = ("email_deterministic", "first_name", "last_name")
     ordering = ("email",)
 
     def get_queryset(self, request: HttpRequest) -> QuerySet[CustomUser]:
