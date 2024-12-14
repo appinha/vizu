@@ -34,7 +34,17 @@ describe("DataTable", () => {
     render(<DataTableWithProviders data={dataMock} />);
 
     expect(screen.getByRole("table")).toBeInTheDocument();
+
     expect(screen.getAllByRole("row")).toHaveLength(3);
+    expect(
+      screen.getByRole("row", { name: "Valor Description" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("row", { name: "81.5 Mia Pizzaria" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("row", { name: "288 Risoteria Villa Lobos" }),
+    ).toBeInTheDocument();
 
     expect(
       screen.getByRole("columnheader", { name: "Valor" }),
@@ -56,7 +66,14 @@ describe("DataTable", () => {
     render(<DataTableWithProviders data={[]} />);
 
     expect(screen.getByRole("table")).toBeInTheDocument();
+
     expect(screen.getAllByRole("row")).toHaveLength(2);
+    expect(
+      screen.getByRole("row", { name: "Valor Description" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("row", { name: "No results." }),
+    ).toBeInTheDocument();
 
     expect(
       screen.getByRole("columnheader", { name: "Valor" }),

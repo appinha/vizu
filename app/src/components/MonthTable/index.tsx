@@ -31,7 +31,7 @@ export default function MonthTable(props: Props) {
   });
 
   return (
-    <div className="flex w-full flex-col gap-y-2">
+    <div data-testid="MonthTable" className="flex w-full flex-col gap-y-2">
       <H3 className="text-center">Gastos do mês de {month}</H3>
       <DataTable table={table} />
     </div>

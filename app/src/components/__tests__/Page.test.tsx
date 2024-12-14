@@ -1,6 +1,7 @@
 import { screen } from "@testing-library/react";
 
 import Page from "@/components/Page";
+import { RootState } from "@/store";
 import { renderWithProviders } from "@/testing/renderWithProviders";
 
 describe("Page", () => {
@@ -19,14 +20,25 @@ describe("Page", () => {
   });
 
   it("renders the content container with prop className", () => {
-    renderWithProviders(<Page className="something" />);
+    const customClass = "custom-class";
 
-    expect(screen.getByTestId("page-content")).toHaveClass("something");
+    renderWithProviders(<Page className={customClass} />);
+
+    expect(screen.getByTestId("page-content")).toHaveClass(customClass);
   });
 
-  it("renders the logo", () => {
-    renderWithProviders(<Page className="something" />);
+  it("renders the logo when no month is selected", () => {
+    renderWithProviders(<Page />);
 
     expect(screen.getByAltText("Vizu logo")).toHaveClass("h-36");
+  });
+
+  it("renders MonthTable component when a month is selected", () => {
+    const preloadedState: RootState = { data: { selectedMonth: "Março" } };
+
+    renderWithProviders(<Page />, { preloadedState });
+
+    expect(screen.getByTestId("MonthTable")).toBeInTheDocument();
+    expect(screen.queryByAltText("Vizu logo")).not.toBeInTheDocument();
   });
 });
