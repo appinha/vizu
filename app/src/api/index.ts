@@ -1,4 +1,4 @@
-import { get } from "@/api/fetchutils";
+import { get } from "@/api/fetch-utils";
 
 export default {
   async healthcheck() {
