@@ -16,6 +16,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Component = asChild ? Slot : "button";
     return (
       <Component
+        data-testid={`Button-${variant}`}
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}

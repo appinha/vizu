@@ -27,7 +27,7 @@ export default function SortingTableHeader<T>(props: Props<T>) {
       className="text-primary-700 hover:text-primary-500 whitespace-nowrap"
     >
       {title}
-      <Icon />
+      <Icon data-testid={`icon-${Icon.displayName}`} />
     </Button>
   );
 }
