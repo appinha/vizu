@@ -4,7 +4,9 @@ import { cn } from "@/lib/utils";
 
 // TODO: define font-heading in tailwind config
 
-export function H1(props: PropsWithChildren & { className?: string }) {
+type Props = PropsWithChildren & { className?: string };
+
+export function H1(props: Props) {
   const { className, children } = props;
 
   return (
@@ -14,7 +16,7 @@ export function H1(props: PropsWithChildren & { className?: string }) {
   );
 }
 
-export function H2(props: PropsWithChildren & { className?: string }) {
+export function H2(props: Props) {
   const { className, children } = props;
 
   return (
@@ -29,7 +31,7 @@ export function H2(props: PropsWithChildren & { className?: string }) {
   );
 }
 
-export function H3(props: PropsWithChildren & { className?: string }) {
+export function H3(props: Props) {
   const { className, children } = props;
 
   return (
@@ -39,7 +41,7 @@ export function H3(props: PropsWithChildren & { className?: string }) {
   );
 }
 
-export function H4(props: PropsWithChildren & { className?: string }) {
+export function H4(props: Props) {
   const { className, children } = props;
 
   return <h4 className={cn("font-medium", className)}>{children}</h4>;
