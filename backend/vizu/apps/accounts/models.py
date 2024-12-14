@@ -10,7 +10,7 @@ from .managers import CustomUserManager
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
-    Classe customizada de usuário.
+    Customized User model.
 
     We have no need for the `username` attribute, so it was removed.
     The `email` becomes the user's main attribute, used for login. Therefore,
