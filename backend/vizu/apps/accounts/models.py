@@ -12,13 +12,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     """
     Classe customizada de usuário.
 
-    Não existe necessidade do atributo `username`, então ele foi removido.
-    O `email` torna-se o atributo principal do usuário, usado para fazer
-    login. Por isso, foram criadas validações para que o email seja sempre
-    único e case-insensitive (por meio de uma `collation` do SQLite).
+    We have no need for the `username` attribute, so it was removed.
+    The `email` becomes the user's main attribute, used for login. Therefore,
+    validations were created to ensure that the email is always unique and
+    case-insensitive (through a SQLite `collation`).
     """
 
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
+    first_name = models.CharField(_("first name"), max_length=150)
     last_name = models.CharField(_("last name"), max_length=150, blank=True)
     email = models.EmailField(
         _("email address"),
@@ -46,7 +46,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["first_name"]
 
     class Meta:
         verbose_name = _("user")
