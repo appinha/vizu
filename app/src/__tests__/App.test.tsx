@@ -22,6 +22,6 @@ describe("App", () => {
     fireEvent.click(screen.getByText("Selecione o mês..."));
     fireEvent.click(screen.getByText("Março"));
 
-    expect(screen.getByText("Mês selecionado: Março")).toBeInTheDocument();
+    expect(screen.getByText("Gastos do mês de Março")).toBeInTheDocument();
   });
 });
