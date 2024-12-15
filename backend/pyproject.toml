@@ -13,10 +13,19 @@ django-cors-headers = "^4.6.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.8.2"
+pytest = "^8.3.4"
+pytest-django = "^4.9.0"
+coverage = "^7.6.9"
+pytest-cov = "^6.0.0"
+pytest-xdist = "^3.6.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "vizu.settings"
+addopts = "--reuse-db --durations=1 --no-migrations"
 
 [tool.ruff]
 # Exclude a variety of commonly ignored directories.

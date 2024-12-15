@@ -25,6 +25,14 @@ migrate:
 makemigrations:
 	$(RUN) makemigrations
 
+.PHONY: test
+test:
+	poetry run pytest --durations=10
+
+.PHONY: coverage
+coverage:
+	poetry run pytest --durations=10 --cov --cov-report=term --cov-report=html:./htmlcov
+
 .PHONY: install
 install:
 	@echo "\n🏁 $(CYAN_B)Starting the installation process...$(NC)"
