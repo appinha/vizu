@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix ; npm run format",
+    "lint": "tsc -b ; eslint .",
+    "lint:fix": "tsc -b ; eslint . --fix ; npm run format",
     "format": "prettier --write '**/*.{js,jsx,ts,tsx}'",
     "test": "vitest",
     "test:ui": "vitest --ui",
