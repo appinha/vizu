@@ -135,16 +135,16 @@ class TestCustomUserMethods:
     @pytest.fixture
     def custom_user(self, django_user_model):
         return django_user_model.objects.create_user(
-            email="caue@treinor.com.br",
-            password="treinor",
+            email="caue@vizu.com.br",
+            password="vizu",
             first_name="Caue",
             last_name="Bittencourt",
         )
 
     def test_clean(self, custom_user):
-        custom_user.email = "caue@TREINOR.COM.BR"
+        custom_user.email = "caue@VIZU.COM.BR"
         custom_user.clean()
-        assert custom_user.email == "caue@treinor.com.br"
+        assert custom_user.email == "caue@vizu.com.br"
 
     def test_get_full_name(self, custom_user):
         assert custom_user.get_full_name() == "Caue Bittencourt"
