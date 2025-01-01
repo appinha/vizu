@@ -1,7 +1,5 @@
 import pytest
 from django.db import IntegrityError
-from django.test import override_settings
-from django.urls import reverse
 
 pytestmark = pytest.mark.django_db
 
