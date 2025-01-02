@@ -28,7 +28,7 @@ def list_expenses(request):
     return Expense.objects.all()
 
 
-@api.get("/expenses/<id>/", response=ExpenseGet)
+@api.get("/expenses/{id}/", response=ExpenseGet)
 def get_expense(request, id: int):
     return get_object_or_404(Expense, id=id)
 
@@ -44,7 +44,8 @@ class ExpenseCreate(Schema):
 def create_expense(request, payload: ExpenseCreate):
     expense = Expense.objects.create(**payload.dict())
     return JsonResponse(
-        {"data": expense.to_dict(), "message": "Expense created successfully."}
+        {"data": expense.to_dict(), "message": "Expense created successfully."},
+        status=201,
     )
 
 
@@ -55,7 +56,7 @@ class ExpenseUpdate(Schema):
     category: Optional[str] = None
 
 
-@api.put("/expenses/<id>/")
+@api.put("/expenses/{id}/")
 def update_expense(request, id: int, payload: ExpenseUpdate):
     expense = get_object_or_404(Expense, id=id)
 
@@ -69,7 +70,7 @@ def update_expense(request, id: int, payload: ExpenseUpdate):
     )
 
 
-@api.delete("/expenses/<id>/")
+@api.delete("/expenses/{id}/")
 def delete_expense(request, id: int):
     expense = get_object_or_404(Expense, id=id)
     expense.delete()
