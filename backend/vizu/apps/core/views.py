@@ -1,6 +1,5 @@
 from datetime import date as Idate
 from decimal import Decimal
-from typing import List, Optional
 
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -24,7 +23,7 @@ class ExpenseGet(Schema):
     category: str
 
 
-@api.get("/expenses/", response=List[ExpenseGet])
+@api.get("/expenses/", response=list[ExpenseGet])
 def list_expenses(request):
     return Expense.objects.all()
 
@@ -37,8 +36,8 @@ def get_expense(request, id: int):
 class ExpenseCreate(Schema):
     date: Idate
     value: Decimal
-    description: Optional[str] = None
-    category: Optional[str] = None
+    description: str = None
+    category: str = None
 
 
 @api.post("/expenses/")
@@ -51,10 +50,10 @@ def create_expense(request, payload: ExpenseCreate):
 
 
 class ExpenseUpdate(Schema):
-    date: Optional[Idate] = None
-    value: Optional[Decimal] = None
-    description: Optional[str] = None
-    category: Optional[str] = None
+    date: Idate = None
+    value: Decimal = None
+    description: str = None
+    category: str = None
 
 
 @api.put("/expenses/{id}/")
