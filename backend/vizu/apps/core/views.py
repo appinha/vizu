@@ -17,6 +17,7 @@ def healthcheck(request):
 
 
 class ExpenseGet(Schema):
+    id: int
     date: Idate
     value: Decimal
     description: str
