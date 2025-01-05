@@ -21,8 +21,8 @@ all:
 migrate:
 	$(RUN) migrate
 
-.PHONY: makemigrations
-makemigrations:
+.PHONY: migrations
+migrations:
 	$(RUN) makemigrations
 
 .PHONY: test
