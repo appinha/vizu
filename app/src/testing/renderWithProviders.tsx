@@ -25,6 +25,9 @@ const prepareProviders = (extendedRenderOptions: ExtendedRenderOptions) => {
   return { store, container: { wrapper: Wrapper, ...renderOptions } };
 };
 
+/**
+ * @public
+ */
 export const renderWithProviders = async (
   ui: ReactElement,
   extendedRenderOptions: ExtendedRenderOptions = {},
@@ -39,6 +42,9 @@ export const renderWithProviders = async (
   return view;
 };
 
+/**
+ * @public
+ */
 export const renderHookWithProviders = <Result, Props>(
   renderCustomHook: (initialProps: Props) => Result,
   extendedRenderOptions: ExtendedRenderOptions = {},
