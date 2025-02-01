@@ -121,6 +121,9 @@ const TableCaption = forwardRef<
 ));
 TableCaption.displayName = "TableCaption";
 
+/**
+ * @public
+ */
 export {
   Table,
   TableBody,

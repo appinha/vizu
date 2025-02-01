@@ -143,6 +143,9 @@ const SelectSeparator = forwardRef<
 ));
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
+/**
+ * @public
+ */
 export {
   SelectContainer,
   SelectContent,
