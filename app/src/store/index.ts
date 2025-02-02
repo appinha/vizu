@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { api } from "@/api";
 import { dataSlice } from "@/store/Data/reducer";
 
-export const rootReducer = combineSlices(api, dataSlice);
+const rootReducer = combineSlices(api, dataSlice);
 export type RootState = ReturnType<typeof rootReducer>;
 
 export const makeStore = (preloadedState?: Partial<RootState>) => {
