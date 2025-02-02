@@ -1,5 +1,6 @@
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import type { RenderOptions } from "@testing-library/react";
-import { render, renderHook } from "@testing-library/react";
+import { render, renderHook, waitFor } from "@testing-library/react";
 import { PropsWithChildren, ReactElement } from "react";
 import { Provider } from "react-redux";
 
@@ -24,6 +25,17 @@ const prepareProviders = (extendedRenderOptions: ExtendedRenderOptions) => {
   return { store, container: { wrapper: Wrapper, ...renderOptions } };
 };
 
+export const waitForResourcesToLoad = async (store: AppStore) => {
+  const queries = store.getState().api.queries;
+
+  for (const key of Object.keys(queries)) {
+    if (queries[key]?.status === QueryStatus.pending)
+      await waitFor(() => {
+        expect(queries[key]?.status).toBe(QueryStatus.pending);
+      });
+  }
+};
+
 /**
  * @public
  */
@@ -37,6 +49,8 @@ export const renderWithProviders = async (
     ...render(ui, container),
     ...rest,
   };
+
+  await waitForResourcesToLoad(view.store);
 
   return view;
 };
