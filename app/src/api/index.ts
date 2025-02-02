@@ -1,11 +1,17 @@
-import { get } from "@/api/fetchUtils";
+import { createApi } from "@reduxjs/toolkit/query/react";
 
-export default {
-  async getExpenses() {
-    const data = await get("/api/expenses/");
+import { baseQuery } from "@/api/baseQuery";
+import { Expense } from "@/types";
 
-    if (!data) throw new Error("No response");
+export const api = createApi({
+  reducerPath: "api",
+  baseQuery,
+  tagTypes: [],
+  endpoints: (builder) => ({
+    getExpenses: builder.query<Expense[], void>({
+      query: () => ({ method: "GET", url: "/expenses/" }),
+    }),
+  }),
+});
 
-    return await data.json();
-  },
-};
+export const { useGetExpensesQuery } = api;
