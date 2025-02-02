@@ -4,9 +4,9 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import api from "@/api";
+import { useGetExpensesQuery } from "@/api";
 import { columns } from "@/components/MonthTable/columns";
 import DataTable from "@/components/ui/DataTable";
 import { H3 } from "@/components/ui/Headers";
@@ -19,20 +19,11 @@ type Props = {
 
 export default function MonthTable(props: Props) {
   const { month } = props;
-  const [data, setData] = useState<Expense[]>([]);
+  const { data } = useGetExpensesQuery();
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const remoteData: Expense[] = await api.getExpenses();
-      setData(remoteData.map((e) => ({ ...e, value: Number(e.value) })));
-    }
-
-    fetchData();
-  }, []);
-
   const table = useReactTable<Expense>({
-    data,
+    data: data ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
     state: { sorting },

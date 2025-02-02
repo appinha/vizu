@@ -6,6 +6,8 @@ import { cleanup } from "@testing-library/react";
 import { expect } from "vitest";
 import { afterEach } from "vitest";
 
+import applyMockAdapter from "@/testing/apiMock";
+
 declare module "vitest" {
   export interface Assertion<T>
     extends jest.Matchers<void, T>,
@@ -28,3 +30,11 @@ global.matchMedia =
       removeListener: function () {},
     };
   };
+
+export let apiMock: ReturnType<typeof applyMockAdapter>;
+
+// Global beforeEach for all tests
+beforeEach(() => {
+  vi.clearAllMocks();
+  apiMock = applyMockAdapter();
+});

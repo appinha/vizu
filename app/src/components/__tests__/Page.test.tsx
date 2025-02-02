@@ -1,7 +1,6 @@
 import { screen } from "@testing-library/react";
 
 import Page from "@/components/Page";
-import { RootState } from "@/store";
 import { renderWithProviders } from "@/testing/renderWithProviders";
 
 describe("Page", () => {
@@ -34,7 +33,7 @@ describe("Page", () => {
   });
 
   it("renders MonthTable component when a month is selected", () => {
-    const preloadedState: RootState = { data: { selectedMonth: "Março" } };
+    const preloadedState = { data: { selectedMonth: "Março" as const } };
 
     renderWithProviders(<Page />, { preloadedState });
 

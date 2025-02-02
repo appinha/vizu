@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { QueryStatus } from "@reduxjs/toolkit/query";
 import type { RenderOptions } from "@testing-library/react";
-import { render, renderHook } from "@testing-library/react";
+import { render, renderHook, waitFor } from "@testing-library/react";
 import { PropsWithChildren, ReactElement } from "react";
 import { Provider } from "react-redux";
 
-import { AppStore, rootReducer, RootState } from "@/store";
+import { AppStore, makeStore, RootState } from "@/store";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: Partial<RootState>;
@@ -14,7 +14,7 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
 const prepareProviders = (extendedRenderOptions: ExtendedRenderOptions) => {
   const {
     preloadedState = {},
-    store = configureStore({ reducer: rootReducer, preloadedState }),
+    store = makeStore(preloadedState),
     ...renderOptions
   } = extendedRenderOptions;
 
@@ -23,6 +23,17 @@ const prepareProviders = (extendedRenderOptions: ExtendedRenderOptions) => {
   }
 
   return { store, container: { wrapper: Wrapper, ...renderOptions } };
+};
+
+export const waitForResourcesToLoad = async (store: AppStore) => {
+  const queries = store.getState().api.queries;
+
+  for (const key of Object.keys(queries)) {
+    if (queries[key]?.status === QueryStatus.pending)
+      await waitFor(() => {
+        expect(queries[key]?.status).toBe(QueryStatus.pending);
+      });
+  }
 };
 
 /**
@@ -38,6 +49,8 @@ export const renderWithProviders = async (
     ...render(ui, container),
     ...rest,
   };
+
+  await waitForResourcesToLoad(view.store);
 
   return view;
 };
