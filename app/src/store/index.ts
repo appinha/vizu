@@ -8,7 +8,7 @@ import { dataSlice } from "@/store/Data/reducer";
 export const rootReducer = combineSlices(api, dataSlice);
 export type RootState = ReturnType<typeof rootReducer>;
 
-const makeStore = (preloadedState?: Partial<RootState>) => {
+export const makeStore = (preloadedState?: Partial<RootState>) => {
   const store = configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>

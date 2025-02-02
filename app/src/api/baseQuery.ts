@@ -2,10 +2,11 @@ import { isAxiosError } from "axios";
 
 import axiosInstance from "@/api/axiosInstance";
 import { parseAxiosError } from "@/api/utils";
+import { HttpMethod } from "@/types";
 
 type BaseQueryArgs<T> = {
   url: string;
-  method?: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
+  method?: HttpMethod;
   data?: T;
 };
 

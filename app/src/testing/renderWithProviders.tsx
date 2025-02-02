@@ -1,10 +1,9 @@
-import { configureStore } from "@reduxjs/toolkit";
 import type { RenderOptions } from "@testing-library/react";
 import { render, renderHook } from "@testing-library/react";
 import { PropsWithChildren, ReactElement } from "react";
 import { Provider } from "react-redux";
 
-import { AppStore, rootReducer, RootState } from "@/store";
+import { AppStore, makeStore, RootState } from "@/store";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: Partial<RootState>;
@@ -14,7 +13,7 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
 const prepareProviders = (extendedRenderOptions: ExtendedRenderOptions) => {
   const {
     preloadedState = {},
-    store = configureStore({ reducer: rootReducer, preloadedState }),
+    store = makeStore(preloadedState),
     ...renderOptions
   } = extendedRenderOptions;
 
