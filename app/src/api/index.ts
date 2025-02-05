@@ -1,20 +1,17 @@
-import { get } from "@/api/fetchUtils";
+import { createApi } from "@reduxjs/toolkit/query/react";
 
-export default {
-  async healthcheck() {
-    console.log("pinging backend");
-    const data = await get("/api/_healthcheck/");
+import { baseQuery } from "@/api/baseQuery";
+import { Expense } from "@/types";
 
-    if (!data) return { status: "error" };
+export const api = createApi({
+  reducerPath: "api",
+  baseQuery,
+  tagTypes: [],
+  endpoints: (builder) => ({
+    getExpenses: builder.query<Expense[], void>({
+      query: () => ({ method: "GET", url: "/expenses/" }),
+    }),
+  }),
+});
 
-    return await data.json();
-  },
-
-  async getExpenses() {
-    const data = await get("/api/expenses/");
-
-    if (!data) throw new Error("No response");
-
-    return await data.json();
-  },
-};
+export const { useGetExpensesQuery } = api;

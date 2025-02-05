@@ -2,14 +2,17 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { useDispatch, useSelector } from "react-redux";
 
+import { api } from "@/api";
 import { dataSlice } from "@/store/Data/reducer";
 
-export const rootReducer = combineSlices(dataSlice);
+const rootReducer = combineSlices(api, dataSlice);
 export type RootState = ReturnType<typeof rootReducer>;
 
-const makeStore = (preloadedState?: Partial<RootState>) => {
+export const makeStore = (preloadedState?: Partial<RootState>) => {
   const store = configureStore({
     reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(api.middleware),
     preloadedState,
   });
   setupListeners(store.dispatch);
