@@ -24,7 +24,15 @@ class ExpenseGet(Schema):
 
 
 @api.get("/expenses/", response=list[ExpenseGet])
-def list_expenses(request):
+def list_expenses(request, period: int = None):
+    if period:
+        if len(str(period)) != 6:
+            return JsonResponse({"error": "Invalid period format."}, status=400)
+
+        year = period // 100
+        month = period % 100
+        return Expense.objects.filter(date__year=year, date__month=month)
+
     return Expense.objects.all()
 
 
