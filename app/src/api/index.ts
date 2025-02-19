@@ -8,8 +8,11 @@ export const api = createApi({
   baseQuery,
   tagTypes: [],
   endpoints: (builder) => ({
-    getExpenses: builder.query<Expense[], void>({
-      query: () => ({ method: "GET", url: "/expenses/" }),
+    getExpenses: builder.query<Expense[], string>({
+      query: (period) => ({
+        method: "GET",
+        url: `/expenses/?period=${period}`,
+      }),
     }),
   }),
 });

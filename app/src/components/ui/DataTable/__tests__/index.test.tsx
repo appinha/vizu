@@ -72,7 +72,7 @@ describe("DataTable", () => {
       screen.getByRole("row", { name: "Valor Description" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("row", { name: "No results." }),
+      screen.getByRole("row", { name: "Nenhum registro encontrado." }),
     ).toBeInTheDocument();
 
     expect(
@@ -83,7 +83,9 @@ describe("DataTable", () => {
     ).toBeInTheDocument();
 
     expect(screen.getAllByRole("cell")).toHaveLength(1);
-    expect(screen.getAllByRole("cell")[0]).toHaveTextContent("No results.");
+    expect(screen.getAllByRole("cell")[0]).toHaveTextContent(
+      "Nenhum registro encontrado.",
+    );
   });
 
   it("on row click, triggers callback", () => {

@@ -5,7 +5,7 @@ import { Month } from "@/constants/dates";
 import { renderWithProviders } from "@/testing/renderWithProviders";
 
 describe("MonthTable", () => {
-  const month: Month = "Janeiro";
+  const month: Month = "01";
   const defaultProps = { month };
 
   const renderComponent = async () => {
