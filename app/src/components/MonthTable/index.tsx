@@ -10,7 +10,7 @@ import { useGetExpensesQuery } from "@/api";
 import { columns } from "@/components/MonthTable/columns";
 import DataTable from "@/components/ui/DataTable";
 import { H3 } from "@/components/ui/Headers";
-import { Month } from "@/constants/dates";
+import { Month, MONTH_OPTIONS } from "@/constants/dates";
 import { Expense } from "@/types";
 
 type Props = {
@@ -19,7 +19,10 @@ type Props = {
 
 export default function MonthTable(props: Props) {
   const { month } = props;
-  const { data } = useGetExpensesQuery();
+  const monthLabel = MONTH_OPTIONS.find(
+    (option) => option.value === month,
+  )?.label;
+  const { data } = useGetExpensesQuery(`2025${month}`);
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable<Expense>({
@@ -33,7 +36,7 @@ export default function MonthTable(props: Props) {
 
   return (
     <div data-testid="MonthTable" className="flex w-full flex-col gap-y-2">
-      <H3 className="text-center">Gastos do mês de {month}</H3>
+      <H3 className="text-center">Gastos do mês de {monthLabel}</H3>
       <DataTable table={table} />
     </div>
   );

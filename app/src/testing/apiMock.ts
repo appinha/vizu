@@ -15,7 +15,12 @@ type EndpointConfig = {
 };
 const ENDPOINT_CONFIGS: EndpointConfig[] = [
   // api/getExpenses
-  { method: "GET", url: "/expenses/", status: 200, data: monthExpensesMock },
+  {
+    method: "GET",
+    url: "/expenses/?period=202501",
+    status: 200,
+    data: monthExpensesMock,
+  },
 ];
 
 const configMock = (args: {
