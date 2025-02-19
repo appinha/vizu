@@ -25,6 +25,9 @@ const prepareProviders = (extendedRenderOptions: ExtendedRenderOptions) => {
   return { store, container: { wrapper: Wrapper, ...renderOptions } };
 };
 
+/**
+ * @public
+ */
 export const waitForResourcesToLoad = async (store: AppStore) => {
   const queries = store.getState().api.queries;
 
